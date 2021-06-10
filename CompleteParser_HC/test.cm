@@ -1,0 +1,40 @@
+/* Declare some global variables */
+bool g[4];
+
+/**
+ * This function prints up to 5 booleans from array b, which is of length a.
+ */
+int printUpToFive(int a, bool b[]) {
+    /* Some local variables */
+    int i;
+    int arr[5];
+
+    /* followed by some statements */
+    i = 0;
+    while (i < a && i+1 <= 5){
+        output(b[i]);
+        arr[i] = i;
+    }
+    return i;
+}
+
+/**
+ * Semantically, main is required to be at the end. However, this error isn't
+ * caught yet ¯\_(ツ)_/¯
+ */
+void main(void) {
+    /* Local declarations */
+    int flag;
+    int num/* = 1 */; /* <-- if you uncomment that, you get a syntax error */
+    bool booleans[6];
+
+    /* Function body */
+    num = 6;
+    booleans[0] = booleans[1] = booleans[2] = false;
+    booleans[3] = booleans[4] = booleans[5] = true;
+    flag = printUpToFive(num, booleans);
+    while (flag != num){
+        num = num - 5;
+        printUpToFive(num, (booleans=booleans+5));
+    }
+}
